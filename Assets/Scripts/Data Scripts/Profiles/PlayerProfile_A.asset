@@ -17,7 +17,7 @@ MonoBehaviour:
   groundDeceleration: 25
   airAcceleration: 10
   maxAirSpeed: 5
-  jumpForce: 8
+  jumpForce: 13
   gravity: -25
   maxFallSpeed: -20
   groundCheckDistance: 0.2

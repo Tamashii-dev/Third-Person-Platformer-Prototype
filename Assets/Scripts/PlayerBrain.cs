@@ -155,7 +155,7 @@ public class PlayerBrain : MonoBehaviour
             verticalVelocity = -2f;
         }
     }
-
+    
     private void HandleJump()
     {
         Vector3 moveDirection = GetCameraRelativeMoveDirection();

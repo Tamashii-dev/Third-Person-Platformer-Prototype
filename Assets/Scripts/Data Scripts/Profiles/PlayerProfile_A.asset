@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ab7033729ab4a34baf62f6f9ea554bc, type: 3}
   m_Name: PlayerProfile_A
   m_EditorClassIdentifier: 
-  walkSpeed: 5
+  walkSpeed: 10
   groundAcceleration: 20
-  groundDeceleration: 25
+  groundDeceleration: 30
   airAcceleration: 10
-  maxAirSpeed: 5
-  jumpForce: 13
+  maxAirSpeed: 8
+  jumpForce: 12
   gravity: -25
   maxFallSpeed: -20
   groundCheckDistance: 0.2

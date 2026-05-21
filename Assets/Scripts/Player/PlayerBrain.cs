@@ -97,6 +97,10 @@ public class PlayerBrain : MonoBehaviour
         {
             currentState = PlayerTraversalState.Walk;
         }
+
+        // if the stuff that makes me on jump pad is triggered, my state is now jump pad
+
+        // andother if for when i'm a passenger
         else
         {
             currentState = PlayerTraversalState.Idle;
@@ -118,6 +122,7 @@ public class PlayerBrain : MonoBehaviour
             case PlayerTraversalState.Jump:
                 HandleJump();
                 break;
+            // Add a new case for each new state, and then run a method for that sate (probably all your old jump pad code can go in that state)
         }
     }
 

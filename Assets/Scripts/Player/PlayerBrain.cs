@@ -10,6 +10,7 @@ public class PlayerBrain : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private PlayerSenses senses;
+    [SerializeField] private Animator animator;
 
     [Header("State")]
     [SerializeField] private PlayerTraversalState currentState = PlayerTraversalState.Idle;
@@ -93,6 +94,7 @@ public class PlayerBrain : MonoBehaviour
     {
         if (rb == null) rb = GetComponent<Rigidbody>();
         if (senses == null) senses = GetComponent<PlayerSenses>();
+        animator = GetComponentInChildren<Animator>();
 
         if (rb != null)
         {
@@ -113,6 +115,7 @@ public class PlayerBrain : MonoBehaviour
         if (senses.IsGrounded)
         {
             canDoubleJump = true;
+            animator.SetBool("Jump", false);
         }
     
         UpdateState();
@@ -146,6 +149,7 @@ public class PlayerBrain : MonoBehaviour
     public void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
+        animator.SetBool("Running", true);
     }
 
     public void OnJump(InputValue value)
@@ -188,11 +192,12 @@ public class PlayerBrain : MonoBehaviour
 
         if (moveInput.sqrMagnitude > 0.01f)
         {
-            currentState = PlayerTraversalState.Walk;
+            currentState = PlayerTraversalState.Walk;           
         }
         else
         {
             currentState = PlayerTraversalState.Idle;
+            animator.SetBool("Running", false);
         }
     }
 
@@ -296,7 +301,13 @@ public class PlayerBrain : MonoBehaviour
 
         private void TryJump()
     {
-        if (!jumpPressed) return;
+        if (!jumpPressed) 
+        {
+            
+             animator.SetBool("Jump", true);
+             return;
+        }
+       
 
         // First jump (ground)
         if (senses.IsGrounded)
@@ -304,6 +315,7 @@ public class PlayerBrain : MonoBehaviour
             verticalVelocity = profile.jumpForce;
             currentState = PlayerTraversalState.Jump;
             canDoubleJump = true;
+            animator.SetBool("Jump", true);
         }
         // Second jump (air)
         else if (canDoubleJump)

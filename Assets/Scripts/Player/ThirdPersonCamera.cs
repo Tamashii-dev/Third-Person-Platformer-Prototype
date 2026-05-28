@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ThirdPersonCamera : MonoBehaviour
 {
+    //this allows me to change the speed of the cameraOffset in unity
     [Header("Target")]
     [SerializeField] private Transform target;
 
@@ -23,7 +24,7 @@ public class ThirdPersonCamera : MonoBehaviour
             yaw = target.eulerAngles.y;
         }
     }
-
+    // allows the player to control the cameraOffset in game.
     public void SetLookInput(Vector2 newLookInput)
     {
         lookInput = newLookInput;

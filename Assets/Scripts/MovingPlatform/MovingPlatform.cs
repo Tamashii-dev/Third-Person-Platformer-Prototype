@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
+    // this lets me toggle the speed and place a WaypointPath in the hub.
     [SerializeField]
     private WaypointPath _waypointPath;
 
@@ -23,6 +24,7 @@ public class MovingPlatform : MonoBehaviour
         TargetNextWaypoint();
     }
 
+    //the math for the platform to move to one location to the next.
     void FixedUpdate()
     {
         _elapsedTime += Time.deltaTime;
@@ -38,6 +40,7 @@ public class MovingPlatform : MonoBehaviour
         }
     }
 
+    // this allows it to go to the next WaypointPath so i can keep adding more WaypointPaths.
     private void TargetNextWaypoint()
     {
         _previousWaypoint = _waypointPath.GetWaypoint(_targetWaypointIndex);

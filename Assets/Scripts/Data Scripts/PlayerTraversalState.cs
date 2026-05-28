@@ -3,10 +3,10 @@ public enum PlayerTraversalState // Public list of all states the player can be 
     Idle,// Session 1
     Walk, // Session 1
     Jump, // Session 1
-    box, // Add new traversal types here
+    box, 
     JumpPad,
     
-
-    // Homework / Session 2
+    //this allows me to make more player states so i can which into diffenrent states.
+    
 
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Diamond : MonoBehaviour
 {
+    //this lets the player detect the diamonds for them to float to the player
         [Header("Settings")]
         public float detectRange = 5f;
         public float moveSpeed = 8f;
@@ -31,6 +32,7 @@ public class Diamond : MonoBehaviour
                 );
             }
         }
+   //this allows the Diamond to detect the player for a trigger to be collected for the playerInventory
     private void OnTriggerEnter(Collider other)
     {
         PlayerInventory playerInventory = other.GetComponent<PlayerInventory>();

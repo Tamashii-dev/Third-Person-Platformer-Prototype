@@ -3,6 +3,7 @@ using UnityEngine.InputSystem; // Will need to install input system from Package
 
 public class PlayerBrain : MonoBehaviour
 {
+    // all this allows the player to References or be Reference in all the scripts and other scripts
     [Header("Data")]
     [SerializeField] private PlayerProfileSO profile;
 
@@ -37,7 +38,7 @@ public class PlayerBrain : MonoBehaviour
     private float dashCooldownTimer;
     private Vector3 dashDirection;
    
-    
+    // this allows me to dash or air dash 
     public void OnDash(InputValue value)
     {
         if  (value.isPressed && dashCooldownTimer <= 0f)
@@ -60,7 +61,7 @@ public class PlayerBrain : MonoBehaviour
          ? moveDir
         : transform.forward;
     }
-    
+    // this allows me to go into a differnt state for my JumpPad and for my box.
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("JumpPad"))
@@ -78,7 +79,7 @@ public class PlayerBrain : MonoBehaviour
     }
    
     
-
+    // lets the player know when im bouncing is false so it knows im in the air.
     private void HandleJumpPad()
     {
         verticalVelocity = jumpSpeed;
@@ -110,7 +111,7 @@ public class PlayerBrain : MonoBehaviour
 
         senses.RunChecks(profile);
 
-        
+        // lets the player know IsGrounded so the player is able to jump and dash
         
         if (senses.IsGrounded)
         {
@@ -137,7 +138,7 @@ public class PlayerBrain : MonoBehaviour
             }
         }
     }
-
+    //this handles all my movement 
     private void FixedUpdate()
     {
         if (profile == null || rb == null) return;
@@ -172,7 +173,7 @@ public class PlayerBrain : MonoBehaviour
             followCamera.SetLookInput(lookInput);
         }
     }
-
+    //this lets the player know if im doing, say isdashing it will return me to my idle state so im not always isdashing.
    private void UpdateState()
     {
         if (isDashing)
@@ -212,7 +213,7 @@ public class PlayerBrain : MonoBehaviour
         return;
        }
     
-    
+         //theses are all my states for the player to switch to 
         switch (currentState)
         {
             case PlayerTraversalState.Idle:
@@ -239,7 +240,7 @@ public class PlayerBrain : MonoBehaviour
         }
     }
 
-   
+    //this section handles all my states so if im dashing or walking or jumping 
 
     private void HandleIdle()
     {
@@ -308,7 +309,7 @@ public class PlayerBrain : MonoBehaviour
              return;
         }
        
-
+        // this is my jump and giving me my double jump as well 
         // First jump (ground)
         if (senses.IsGrounded)
         {
@@ -327,7 +328,7 @@ public class PlayerBrain : MonoBehaviour
 
             jumpPressed = false;
     }
-
+    // my camera
     private Vector3 GetCameraRelativeMoveDirection()
     {
         if (cameraTransform == null)
@@ -356,7 +357,7 @@ public class PlayerBrain : MonoBehaviour
 
         return moveDirection;
     }
-
+    // my gravity 
     private void ApplyGravity()
     {
         if (isDashing) return;

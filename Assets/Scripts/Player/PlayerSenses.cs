@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerSenses : MonoBehaviour
 {
+    // all this is isGrounded and TouchingWall so the player knows its walking on ground or on a terrain so my player can always move.
     [Header("References")]
     [SerializeField] private Transform groundCheckPoint;
     [SerializeField] private Transform wallCheckPoint;

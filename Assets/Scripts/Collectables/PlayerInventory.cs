@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+using UnityEngine.SceneManagement;
 
 public class PlayerInventory : MonoBehaviour
 {
@@ -15,5 +15,10 @@ public class PlayerInventory : MonoBehaviour
     {
         NumberOfDiamonds++;
         OnDiamondCollected.Invoke(this);
+        
+        if(NumberOfDiamonds == 108)
+        {
+            SceneManager.LoadScene("Win");
+        }   
     }
 }

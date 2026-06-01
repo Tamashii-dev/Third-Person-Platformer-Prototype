@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee1150589c10aa841bd60837a6f6ceab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectRange: 736.81
+  detectRange: 8
   moveSpeed: 20
 --- !u!95 &7476415945858396469
 Animator:
